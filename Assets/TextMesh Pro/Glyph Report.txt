@@ -1,0 +1,13 @@
+Font: Rounded Mplus 1c  Style: ExtraBold
+Point Size: 177   Padding: 0   SP/PD Ratio: 0.0%
+
+Characters included: 2523/2524
+Missing characters: 1
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+ID: 9	Hex: 9	Char [	]
+
+Characters excluded from packing:
+----------------------------------------
