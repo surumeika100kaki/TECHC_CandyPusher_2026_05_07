@@ -3,27 +3,27 @@ using UnityEngine;
 
 public class Stage_Out : MonoBehaviour
 {
-    //ƒXƒRƒA‚Ì•Û‘¶•Ï”‚Ìì¬
+    //ã‚¹ã‚³ã‚¢ã®ä¿å­˜å¤‰æ•°ã®ä½œæˆ
     private int Score = 0;
     [SerializeField] TextMeshProUGUI Score_Text;
-    //‚±‚ÌƒR[ƒh‚ğƒAƒ^ƒbƒ`‚µ‚½ƒIƒuƒWƒFƒNƒg‚É‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ª‚·‚è”²‚¯‚½‚ÉŒÄ‚Î‚ê‚éB
+    //ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’ã‚¢ã‚¿ãƒƒãƒã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä»–ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã™ã‚ŠæŠœã‘ãŸæ™‚ã«å‘¼ã°ã‚Œã‚‹ã€‚
     private void Start()
     {
-        Score_Text.text = $"ƒXƒRƒA:{Score}";
-        //•Ê‰ğ
-        //Score_Text.text = "ƒXƒRƒAF" + Score;
+        Score_Text.text = $"ã‚¹ã‚³ã‚¢:{Score}";
+        //åˆ¥è§£
+        //Score_Text.text = "ã‚¹ã‚³ã‚¢ï¼š" + Score;
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"{other.name}‚ª‚·‚è”²‚¯‚½");
-        //‚·‚è”²‚¯‚½ƒIƒuƒWƒFƒNƒg‚ğ”jŠü
+        Debug.Log($"{other.name}ãŒã™ã‚ŠæŠœã‘ãŸ");
+        //ã™ã‚ŠæŠœã‘ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç ´æ£„
         Destroy( other.gameObject );
-        //ƒXƒRƒA‚ğ+1’Ç‰Á
+        //ã‚¹ã‚³ã‚¢ã‚’+1è¿½åŠ 
         Score = Score + 1;
-        //•Ê‰ğ
+        //åˆ¥è§£
         //Score += 1;
-        //ƒRƒ“ƒ\[ƒ‹‚ÉƒXƒRƒA‚ğ•\¦
-        Debug.Log($"ƒXƒRƒAF{Score}");
-        Score_Text.text = $"ƒXƒRƒA:{Score}";
+        //ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«ã‚¹ã‚³ã‚¢ã‚’è¡¨ç¤º
+        Debug.Log($"ã‚¹ã‚³ã‚¢ï¼š{Score}");
+        Score_Text.text = $"ã‚¹ã‚³ã‚¢:{Score}";
     }
 }
