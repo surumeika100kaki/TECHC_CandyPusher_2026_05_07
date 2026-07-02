@@ -33,7 +33,7 @@ public class Stage_Out : MonoBehaviour
     {
         //Debug.Log($"{other.name}がすり抜けた");
         //すり抜けたオブジェクトを破棄
-        //Destroy( other.gameObject );
+        Destroy( other.gameObject );
         //スコアを+1追加
         Score = Score + 1;
         //別解
