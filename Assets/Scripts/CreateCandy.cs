@@ -5,6 +5,22 @@ using TMPro;
 
 public class CreateCandy : MonoBehaviour
 {
+    //xの往復までの速度N秒を格納する変数
+    public float x_speed = 1f;
+    //zの往復までの速度N秒を格納する変数
+    public float z_speed = 1f;
+    //どこまでX座標が移動するかを格納する変数
+    public float x_MoveRange = 2.5f;
+    //どこまでZ座標が移動するかを格納する変数
+    public float z_MoveRange = 2.5f;
+    //動いて何秒目かを格納する変数
+    private float MoveTiamer = 1;
+    //z方向に動いている時間を格納する変数
+    private float z_Movetime = 0;
+    //ｚ軸の増加量を格納する変数；
+    private float z = 0;
+    private Vector3 startPosition;
+
     //キャンディーを何秒に一回生成するかを格納する変数
     public float CreateTaimer_Rimit = 1;
     //キャンディーの生成から何秒かを格納する変数
@@ -30,7 +46,7 @@ public class CreateCandy : MonoBehaviour
 
         void Update()
     {
-        moveCandyGeneretor.MoveCandyGenerate();
+        moveCandyGeneretor.MoveCandyGenerate(startPosition);
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
@@ -79,5 +95,6 @@ public class CreateCandy : MonoBehaviour
             GameObject createPrefab = Instantiate(Candy[candyType]);
         //GameObject createPrefab = Instantiate(Candy[Random.Range(0,Candy.Count)]);
         createPrefab.transform.position = this.transform.position;
+
     }
 }
