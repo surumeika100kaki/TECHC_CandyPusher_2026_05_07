@@ -2,36 +2,48 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioSource sabAudioSource;
-    public AudioSource bgmAudioSource;
+    //ƒVƒ“ƒOƒ‹ƒgƒ“
+    public static AudioManager instance;
+
+    private AudioSource seAudioSource;
+    private AudioSource bgmAudioSource;
     public AudioClip[] seAudioClips;
     public AudioClip[] bgmAudioClips;
 
-    public void SEPlay(int i)
+    private void Awake()
     {
-        audioSource.clip = seAudioClips[i];
-        if (audioSource.isPlaying == true)
+        if (instance == null)
         {
-            sabAudioSource.clip = seAudioClips[i];
-            sabAudioSource.Play();
+            instance = this;
         }
         else
         {
-            audioSource.Play();
+            Destroy(this.gameObject);
         }
+    }
+    public void SEPlay(int i)
+    {
+        if (seAudioSource == null)
+        {
+            seAudioSource = this.gameObject.AddComponent<AudioSource>();
+        }
+        seAudioSource.clip = seAudioClips[i];
+        seAudioSource.Play();
     }
 
-    public void BGMPlay()
+    public void BGMPlay(int i)
     {
-        bgmAudioSource.clip = bgmAudioClips[0];
-        bgmAudioSource.Play();
-    }
-    public void Update()
-    {
-        if(bgmAudioSource.isPlaying == false)
+        if (bgmAudioSource == null)
         {
-            BGMPlay();
+            bgmAudioSource = this.gameObject.AddComponent<AudioSource>();
         }
+        bgmAudioSource.clip = bgmAudioClips[i];
+        bgmAudioSource.Play();
+        bgmAudioSource.loop = true;
+    }
+
+    public void Start()
+    {
+        BGMPlay(0);
     }
 }
