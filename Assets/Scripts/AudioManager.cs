@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     private AudioSource seAudioSource;
+    private AudioSource sabSeAudioSource;
     private AudioSource bgmAudioSource;
     public AudioClip[] seAudioClips;
     public AudioClip[] bgmAudioClips;
@@ -27,8 +28,20 @@ public class AudioManager : MonoBehaviour
         {
             seAudioSource = this.gameObject.AddComponent<AudioSource>();
         }
-        seAudioSource.clip = seAudioClips[i];
-        seAudioSource.Play();
+        if(sabSeAudioSource == null)
+        {
+            sabSeAudioSource = this.gameObject.AddComponent<AudioSource>();
+        }
+        if (seAudioSource.isPlaying == true)
+        {
+            sabSeAudioSource.clip = seAudioClips[i];
+            sabSeAudioSource.Play();
+        }
+        else
+        {
+            seAudioSource.clip = seAudioClips[i];
+            seAudioSource.Play();
+        }
     }
 
     public void BGMPlay(int i)
