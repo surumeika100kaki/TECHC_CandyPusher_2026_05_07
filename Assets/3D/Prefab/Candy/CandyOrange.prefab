@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8988130390643358675}
   - component: {fileID: 2834815945124540693}
   - component: {fileID: 602304624618099396}
+  - component: {fileID: 3929882571000555061}
   m_Layer: 0
   m_Name: CandyOrange
   m_TagString: Untagged
@@ -141,3 +142,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: f2beb3c7f93196540bcbffa9a4a19635, type: 3}
+--- !u!114 &3929882571000555061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8988130390641354003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1672e5e438fea43aff46d73373a26a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Candy
+  candyType: 3

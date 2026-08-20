@@ -11,11 +11,6 @@ public class Stage_Out : MonoBehaviour
     [SerializeField] TextMeshProUGUI Score_TMP;
 
     //このコードをアタッチしたオブジェクトに他のオブジェクトがすり抜けた時に呼ばれる。
-    private void Start()
-    {
-        Score_TMP.text = $"スコア:{Score}";
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "0")
@@ -39,13 +34,11 @@ public class Stage_Out : MonoBehaviour
         //すり抜けたオブジェクトを破棄
         Destroy( other.gameObject );
         //スコアを+1追加
-        Score = Score + 1;
+        CoinManager.Instance.AddCoin(1);
 
-        if (Score == 100)
+        if (CoinManager.Instance.GetCoin() == 100)
         {
             AudioManager.instance.BGMPlay(1);
         }
-        //コンソールにスコアを表示
-        Score_TMP.text = $"スコア:{Score}";
     }
 }
