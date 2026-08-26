@@ -4,7 +4,7 @@ public class CoinManager : MonoBehaviour
 {
     public static CoinManager Instance;
 
-    public int coin = 100;
+    public int coin = 1000;
 
     private void Awake()
     {

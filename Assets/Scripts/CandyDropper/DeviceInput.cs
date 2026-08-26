@@ -16,7 +16,6 @@ public class DeviceInput : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(inputVector2Action.ReadValue<Vector2>());
         if (createCandyAction.WasPerformedThisFrame())
         {
             createCandy.DropCandy();

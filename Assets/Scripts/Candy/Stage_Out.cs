@@ -5,8 +5,7 @@ using UnityEngine;
 public class Stage_Out : MonoBehaviour
 {
     CreateCandy createType;
-    //スコアの保存変数の作成
-    private int Score = 0;
+    public CoinUiUpdate coinUiUpdate;
 
     [SerializeField] TextMeshProUGUI Score_TMP;
 
@@ -35,8 +34,9 @@ public class Stage_Out : MonoBehaviour
         Destroy( other.gameObject );
         //スコアを+1追加
         CoinManager.Instance.AddCoin(1);
+        coinUiUpdate.UpdateCoinDisplay();
 
-        if (CoinManager.Instance.GetCoin() == 100)
+        if (CoinManager.Instance.GetCoin() == 1000)
         {
             AudioManager.instance.BGMPlay(1);
         }

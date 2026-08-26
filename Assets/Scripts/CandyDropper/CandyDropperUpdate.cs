@@ -12,7 +12,6 @@ public class CandyDropperUpdate : MonoBehaviour
         moveCandyGeneretor = GetComponent<MoveCandyGeneretor>();
         //自身の初期positionをstartPositionに格納
         startPosition = transform.position;
-        createCandy.SetCandy();
     }
     void Update()
     {

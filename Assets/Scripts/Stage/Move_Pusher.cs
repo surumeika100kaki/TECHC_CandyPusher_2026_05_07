@@ -4,11 +4,9 @@ public class Move_Pusher : MonoBehaviour
 {
     public float speed = 1f;
     public float pusherMoveRange = 5f;
-    private Vector3 startPosition;
     private Rigidbody rb ;
     void Start()
     {
-        startPosition = this.transform.localPosition;
         rb = this.GetComponent<Rigidbody>();
     }
 
