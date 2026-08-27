@@ -42,7 +42,7 @@ public class CoinRecovery : MonoBehaviour
                 if (CoinManager.Instance.GetCoin() < CoinManager.Instance.CoinCost * 100)
                 {
                     targetSlider.value = 0f;
-                    CoinManager.Instance.AddCoin(RecoveryCoinIncrease);
+                    CoinManager.Instance.AddCoin(CoinManager.Instance.RecoveryCoinIncrease);
                 }
             }
         }

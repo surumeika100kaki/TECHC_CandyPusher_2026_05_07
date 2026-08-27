@@ -14,7 +14,7 @@ public class SyopBuy : MonoBehaviour
         highRollerTextUpdate.highRollerTextUpdate();
     }
     public void OnClicCoinRecoveryBuy(){
-        if (!CoinManager.Instance.UseCoin(Mathf.RoundToInt(CoinRecovery.RecoveryCoinIncrease * 1.1f)))
+        if (!CoinManager.Instance.UseCoin(Mathf.RoundToInt(CoinManager.Instance.RecoveryCoinIncrease * 1.1f)))
         {
             return;
         }
