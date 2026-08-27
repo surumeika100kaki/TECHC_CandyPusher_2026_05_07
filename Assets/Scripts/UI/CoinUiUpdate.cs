@@ -11,6 +11,6 @@ public class CoinUiUpdate : MonoBehaviour
 
     public void UpdateCoinDisplay()
     {
-        Coin_TMP.text = $"コイン:{CoinManager.Instance.GetCoin()}";
+        Coin_TMP.text = $"{CoinManager.Instance.GetCoin()}";
     }
 }

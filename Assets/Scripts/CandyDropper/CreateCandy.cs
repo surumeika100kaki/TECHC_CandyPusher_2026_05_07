@@ -7,12 +7,11 @@ public class CreateCandy : MonoBehaviour
 {
     public GameObject[] candyPrefabs;
     public Transform dropPoint;
-    public int dropCost = 1;
 
     public void DropCandy()
     {
         // コインを消費できるか確認
-        if (!CoinManager.Instance.UseCoin(dropCost))
+        if (!CoinManager.Instance.UseCoin(CoinManager.Instance.CoinCost))
         {
             return;
         }

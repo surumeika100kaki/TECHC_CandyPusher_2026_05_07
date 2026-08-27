@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class DeviceInput : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class DeviceInput : MonoBehaviour
 
     void Update()
     {
+        // UIの上にマウスがある場合は処理しない
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (createCandyAction.WasPerformedThisFrame())
         {
             createCandy.DropCandy();

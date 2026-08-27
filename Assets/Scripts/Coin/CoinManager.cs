@@ -3,8 +3,11 @@ using UnityEngine;
 public class CoinManager : MonoBehaviour
 {
     public static CoinManager Instance;
-
+    public CoinUiUpdate coinUiUpdate;
     public int coin = 1000;
+    public int CoinCost = 1;
+    public int CoinIncrease = 1;
+        public int RecoveryCoinIncrease = 1;
 
     private void Awake()
     {
@@ -17,6 +20,7 @@ public class CoinManager : MonoBehaviour
         coin += amount;
 
         Debug.Log("コイン +" + amount);
+        coinUiUpdate.UpdateCoinDisplay();
     }
 
     // コインを消費する
@@ -32,6 +36,7 @@ public class CoinManager : MonoBehaviour
 
         Debug.Log("コイン -" + amount);
 
+        coinUiUpdate.UpdateCoinDisplay();
         return true;
     }
 
