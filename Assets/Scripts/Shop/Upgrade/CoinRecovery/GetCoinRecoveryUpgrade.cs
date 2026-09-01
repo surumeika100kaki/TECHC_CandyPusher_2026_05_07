@@ -9,7 +9,7 @@ public class GetCoinRecoveryUpgrade : MonoBehaviour
     {
         upgradeLevel++;
         CoinRecoveryManeger.Instance.RecoveryCoinIncrease += 1;
-        upgradeCost = Mathf.RoundToInt(upgradeCost * 1.5f * (upgradeLevel/10f)); // 次のアップグレードコストを増加させる
+        upgradeCost = Mathf.RoundToInt(upgradeCost * (1f + (upgradeLevel/10f))); // 次のアップグレードコストを増加させる
         getCoinRecoveryUpgradeText.UpdateUpgradeText(); // テキストを更新する
     }
     public int GetUpgradeLevel()
