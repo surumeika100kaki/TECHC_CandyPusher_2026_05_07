@@ -36,13 +36,13 @@ public class SetupCandySpwan : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < 150; i++)
+        for (int i = 0; i < 200; i++)
         {
             // Z方向の列
-            int zIndex = i / 11;
+            int zIndex = i / 20;
 
             // X方向の位置
-            int xIndex = i % 11;
+            int xIndex = i % 20;
 
             // キャンディ生成位置
             Vector3 spawnPosition = new Vector3(

@@ -3,20 +3,27 @@ using UnityEngine;
 public class SyopBuy : MonoBehaviour
 {
     public HighRollerUpgrade highRollerUpgrade;
-    public HighRollerTextUpdate highRollerTextUpdate;
-    public CoinRecovery CoinRecovery;
-    public void OnClicHighRollerBuy(){
-        if (!CoinManager.Instance.UseCoin(Mathf.RoundToInt(CoinManager.Instance.CoinCost * 1.5f)))
+    public CoinRecoveryCooldownUpgrade coinRecoveryCooldownUpgrade;
+    public GetCoinRecoveryUpgrade getCoinRecoveryUpgrade;
+    public void OnClickHighRollerBuy(){
+        if (!CoinManager.Instance.UseCoin(highRollerUpgrade.GetUpgradeCost()))
         {
             return;
         }
         highRollerUpgrade.HighRollerBuyUpgrade();
-        highRollerTextUpdate.highRollerTextUpdate();
     }
-    public void OnClicCoinRecoveryBuy(){
-        if (!CoinManager.Instance.UseCoin(Mathf.RoundToInt(CoinManager.Instance.RecoveryCoinIncrease * 1.1f)))
+    public void OnClickCoinRecoveryCooldownBuy(){
+        if (!CoinManager.Instance.UseCoin(Mathf.RoundToInt(coinRecoveryCooldownUpgrade.GetUpgradeCost())))
         {
             return;
         }
+        coinRecoveryCooldownUpgrade.UpgradeCoinRecoveryCooldown();
+    }
+    public void OnClickGetCoinRecoveryBuy(){
+        if (!CoinManager.Instance.UseCoin(Mathf.RoundToInt(getCoinRecoveryUpgrade.GetUpgradeCost())))
+        {
+            return;
+        }
+        getCoinRecoveryUpgrade.UpgradeGetCoinIncrease();
     }
 }

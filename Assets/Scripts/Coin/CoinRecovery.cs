@@ -3,48 +3,59 @@ using UnityEngine.UI;
 
 public class CoinRecovery : MonoBehaviour
 {
-    [SerializeField] private Slider targetSlider; // 連動させるスライダー
-    private float timer = 0f; // 0.1秒を測るためのタイマーカウンター
-    public float MaxValue = 100f;
+    [SerializeField] private Slider targetSlider;
+    private float currentTime = 0f;
+    private const float MAX_SLIDER_VALUE = 100f;
 
-    void Start()
+    private void Start()
     {
+        UpdateSliderMaxValue();
         if (targetSlider != null)
         {
-            targetSlider.maxValue = MaxValue;
-            targetSlider.value = MaxValue;
+            targetSlider.value = 0f;
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (targetSlider == null) return;
+        if (targetSlider == null || CoinRecoveryManeger.Instance == null)
+            return;
 
-        // GetCoin の後ろに () を追加
-        if (targetSlider.value >= MaxValue && CoinManager.Instance.GetCoin() >= CoinManager.Instance.CoinCost * 100)
+        // コインが上限に達している場合は回復しない
+        if (CoinManager.Instance.GetCoin() >= CoinManager.Instance.CoinCost * 100)
         {
+            currentTime = 0f;
             return;
         }
 
-        timer += Time.deltaTime;
+        // 経過時間を加算
+        currentTime += Time.deltaTime;
 
-        // タイマーが0.1秒を超えたら処理を実行
-        if (timer >= 0.1f)
+        // 現在設定されている回復間隔（0.1秒 〜 0.01秒）を取得
+        float interval = CoinRecoveryManeger.Instance.RecoveryCoinTimeCount;
+
+        // 設定間隔ごとにスライダーの値を進める
+        if (currentTime >= interval)
         {
-            // スライダーの値を1増やす
             targetSlider.value += 1f;
+            currentTime -= interval; // 精度を落とさないよう超過分を引き算
+        }
 
-            // 0.1秒分だけタイマーを引く
-            timer -= 0.1f;
+        // スライダーが最大まで溜まったらコインを獲得してリセット
+        if (targetSlider.value >= MAX_SLIDER_VALUE)
+        {
+            targetSlider.value = 0f;
+            CoinManager.Instance.AddCoin(
+                CoinRecoveryManeger.Instance.RecoveryCoinIncrease
+            );
+        }
+    }
 
-            if (targetSlider.value >= MaxValue)
-            {
-                if (CoinManager.Instance.GetCoin() < CoinManager.Instance.CoinCost * 100)
-                {
-                    targetSlider.value = 0f;
-                    CoinManager.Instance.AddCoin(CoinManager.Instance.RecoveryCoinIncrease);
-                }
-            }
+    public void UpdateSliderMaxValue()
+    {
+        if (targetSlider != null)
+        {
+            targetSlider.maxValue = MAX_SLIDER_VALUE;
         }
     }
 }

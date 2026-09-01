@@ -25,6 +25,6 @@ public class MoveCandyGeneretor : MonoBehaviour
             MoveTiamer = 1;
         }
         MoveTiamer += Time.deltaTime;
-        this.transform.position = startPosition + new Vector3(x, 0, z);
+        this.transform.position = startPosition + new Vector3(x, 0, 0);
     }
 }

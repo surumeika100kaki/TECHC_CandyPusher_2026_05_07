@@ -9,7 +9,7 @@ public enum CandyType
     Orange,
 
     // 球形キャンディ
-    SphereChocoMInt,
+    SphereChocoMint,
     SphereStrawberry,
     SphereLemon,
     SphereOrange

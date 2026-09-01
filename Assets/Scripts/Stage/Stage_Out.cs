@@ -1,39 +1,69 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Stage_Out : MonoBehaviour
 {
-    CreateCandy createType;
-
     [SerializeField] TextMeshProUGUI Score_TMP;
 
-    //このコードをアタッチしたオブジェクトに他のオブジェクトがすり抜けた時に呼ばれる。
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "0")
-        {
-            AudioManager.instance.SEPlay(1);
-        } else if (other.gameObject.name == "1")
-        {
-            AudioManager.instance.SEPlay(2);
-        } else if (other.gameObject.name == "2")
-        {
-            AudioManager.instance.SEPlay(3);
-        }
-        else if (other.gameObject.name == "3")
-        {
-            AudioManager.instance.SEPlay(4);
-        }
-        else if (other.gameObject.name == "4")
-        {
-            AudioManager.instance.SEPlay(5);
-        }
-        //すり抜けたオブジェクトを破棄
-        Destroy( other.gameObject );
-        //スコアを+1追加
-        CoinManager.Instance.AddCoin(CoinManager.Instance.CoinIncrease);
+        // Candyコンポーネントを取得
+        Candy candy = other.GetComponent<Candy>();
 
+        // キャンディー以外なら処理しない
+        if (candy == null)
+        {
+            return;
+        }
+
+        // キャンディーの種類によって処理を分ける
+        switch (candy.candyType)
+        {
+            case CandyType.ChocoMint:
+                AudioManager.instance.SEPlay(1);
+                break;
+
+            case CandyType.Strawberry:
+                AudioManager.instance.SEPlay(2);
+                break;
+
+            case CandyType.Lemon:
+                AudioManager.instance.SEPlay(3);
+                break;
+
+            case CandyType.Orange:
+                AudioManager.instance.SEPlay(4);
+                break;
+
+            case CandyType.SphereChocoMint:
+                AudioManager.instance.SEPlay(5);
+                break;
+
+            case CandyType.SphereStrawberry:
+                AudioManager.instance.SEPlay(6);
+                break;
+
+            case CandyType.SphereLemon:
+                AudioManager.instance.SEPlay(7);
+                break;
+
+            case CandyType.SphereOrange:
+                AudioManager.instance.SEPlay(8);
+                break;
+        }
+
+        // キャンディーを破棄
+        Destroy(other.gameObject);
+        // コインの倍率を取得
+        float multiplier = CoinMultiplierManager.Instance.GetMultiplier(candy.candyType);
+        // コインの増加量を計算
+        int getCoin = Mathf.RoundToInt(
+        CoinManager.Instance.CoinIncrease * multiplier
+        );
+        // コイン獲得
+        CoinManager.Instance.AddCoin(getCoin);
+
+        // コイン1000到達
         if (CoinManager.Instance.GetCoin() == 1000)
         {
             AudioManager.instance.BGMPlay(1);

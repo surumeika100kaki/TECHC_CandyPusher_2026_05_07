@@ -7,8 +7,6 @@ public class CoinManager : MonoBehaviour
     public int coin = 1000;
     public int CoinCost = 1;
     public int CoinIncrease = 1;
-        public int RecoveryCoinIncrease = 1;
-
     private void Awake()
     {
         Instance = this;
