@@ -17,7 +17,6 @@ public class CoinRecoveryCooldownUpgradTextUpdate : MonoBehaviour
             return;
 
         int currentLevel = coinRecoveryCooldownUpgrade.GetUpgradeLevel();
-        
         // コイン獲得にかかる合計秒数 (N秒)
         float totalTime = CoinRecoveryManeger.Instance.GetRecoveryTime() * 100f;
         int currentSeconds = Mathf.FloorToInt(totalTime);
@@ -31,11 +30,11 @@ public class CoinRecoveryCooldownUpgradTextUpdate : MonoBehaviour
         // 最大レベル判定（Level 9 または 1秒に達した場合）
         if (currentLevel >= 9 || currentSeconds <= 1)
         {
-            upgradeText.text = $"リカバリークールダウン\n効果({currentSeconds}-{reduceSeconds}秒\n価格: ----- Level: {currentLevel}";
+            upgradeText.text = $"リカバリークールダウン\nクールダウン{currentSeconds}秒\n価格: ----- Level: {currentLevel}";
         }
         else
         {
-            upgradeText.text = $"リカバリークールダウン\n効果({currentSeconds}-{reduceSeconds}秒)\n価格: {cost} Level: {currentLevel}" ;
+            upgradeText.text = $"リカバリークールダウン\nクールダウン{currentSeconds}秒\n価格: {cost} Level: {currentLevel}" ;
         }
     }
 }
