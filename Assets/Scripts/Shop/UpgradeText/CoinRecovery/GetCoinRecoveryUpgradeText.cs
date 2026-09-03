@@ -18,6 +18,6 @@ public class GetCoinRecoveryUpgradeText : MonoBehaviour
         int currentLevel = getCoinRecoveryUpgrade.GetUpgradeLevel();
         float upgradeCost = getCoinRecoveryUpgrade.GetUpgradeCost();
 
-        upgradeText.text = $"コイン回復量アップ\n回復量: {CoinRecoveryManeger.Instance.RecoveryCoinIncrease}\n価格: {Mathf.RoundToInt(upgradeCost)} Level: {currentLevel}";
+        upgradeText.text = $"コイン回復量アップ\n回復量: {CoinRecoveryManeger.Instance.RecoveryCoinIncrease}\n Level: {currentLevel} 価格: {Mathf.RoundToInt(upgradeCost)}";
     }
 }

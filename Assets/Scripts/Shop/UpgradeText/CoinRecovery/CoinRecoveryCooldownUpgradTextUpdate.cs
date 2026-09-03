@@ -30,11 +30,11 @@ public class CoinRecoveryCooldownUpgradTextUpdate : MonoBehaviour
         // 最大レベル判定（Level 9 または 1秒に達した場合）
         if (currentLevel >= 9 || currentSeconds <= 1)
         {
-            upgradeText.text = $"リカバリークールダウン\nクールダウン{currentSeconds}秒\n価格: ----- Level: {currentLevel}";
+            upgradeText.text = $"リカバリークールダウン\nクールダウン{currentSeconds}秒\nLevel: {currentLevel} 価格: -----";
         }
         else
         {
-            upgradeText.text = $"リカバリークールダウン\nクールダウン{currentSeconds}秒\n価格: {cost} Level: {currentLevel}" ;
+            upgradeText.text = $"リカバリークールダウン\nクールダウン{currentSeconds}秒\nLevel: {currentLevel} 価格: {cost}" ;
         }
     }
 }

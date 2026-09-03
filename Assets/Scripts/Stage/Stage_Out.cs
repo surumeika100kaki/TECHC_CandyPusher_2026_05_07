@@ -62,6 +62,7 @@ public class Stage_Out : MonoBehaviour
         );
         // コイン獲得
         CoinManager.Instance.AddCoin(getCoin);
+        Debug.Log($"獲得枚数:{CoinManager.Instance.CoinIncrease} × {multiplier} = {Mathf.RoundToInt(CoinManager.Instance.CoinIncrease * multiplier)}");
 
         // コイン1000到達
         if (CoinManager.Instance.GetCoin() == 1000)

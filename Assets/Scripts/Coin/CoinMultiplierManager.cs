@@ -27,8 +27,8 @@ public class CoinMultiplierManager : MonoBehaviour
         // 正方形キャンディ
         candyMultipliers[CandyType.ChocoMint] = 8.0f;
         candyMultipliers[CandyType.Strawberry] = 8.0f;
-        candyMultipliers[CandyType.Lemon] = 5.0f;
-        candyMultipliers[CandyType.Orange] = 5.0f;
+        candyMultipliers[CandyType.Lemon] = 4.0f;
+        candyMultipliers[CandyType.Orange] = 4.0f;
 
         // 球形キャンディ
         candyMultipliers[CandyType.SphereChocoMint] = 3.0f;

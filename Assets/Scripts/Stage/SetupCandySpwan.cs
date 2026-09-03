@@ -35,31 +35,34 @@ public class SetupCandySpwan : MonoBehaviour
             Debug.LogError("candyPrefabsが設定されていません");
             return;
         }
+        for (int y = 0; y < 3; y++ ){
+            int yIndex = y ;
 
-        for (int i = 0; i < 200; i++)
-        {
-            // Z方向の列
-            int zIndex = i / 20;
+            for (int i = 0; i < 200; i++)
+            {
+                // Z方向の列
+                int zIndex = i / 20;
 
-            // X方向の位置
-            int xIndex = i % 20;
+                // X方向の位置
+                int xIndex = i % 20;
 
-            // キャンディ生成位置
-            Vector3 spawnPosition = new Vector3(
-                basePosition.x + xIndex * 1.5f * xDirection,
-                basePosition.y,
-                basePosition.z - zIndex * 1.5f
-            );
+                // キャンディ生成位置
+                Vector3 spawnPosition = new Vector3(
+                    basePosition.x + xIndex * 1.5f * xDirection,
+                    basePosition.y + yIndex,
+                    basePosition.z - zIndex * 1.5f
+                );
 
-            // ランダムなキャンディを選択
-            int index = Random.Range(0, candyPrefabs.Length);
+                // ランダムなキャンディを選択
+                int index = Random.Range(0, candyPrefabs.Length);
 
-            // キャンディ生成
-            Instantiate(
-                candyPrefabs[index],
-                spawnPosition,
-                Quaternion.identity
-            );
+                // キャンディ生成
+                Instantiate(
+                    candyPrefabs[index],
+                    spawnPosition,
+                    Quaternion.identity
+                );
+            }
         }
     }
 }

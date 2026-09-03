@@ -22,7 +22,7 @@ public class CoinRecovery : MonoBehaviour
             return;
 
         // コインが上限に達している場合は回復しない
-        if (CoinManager.Instance.GetCoin() >= CoinManager.Instance.CoinCost * 100)
+        if (CoinManager.Instance.GetCoin() >= CoinManager.Instance.CoinCost * 100 && targetSlider.value <= MAX_SLIDER_VALUE)
         {
             currentTime = 0f;
             return;
