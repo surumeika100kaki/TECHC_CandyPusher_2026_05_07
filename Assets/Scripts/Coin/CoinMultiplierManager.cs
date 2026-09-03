@@ -1,29 +1,56 @@
 using UnityEngine;
 using System.Collections.Generic;
+
 public class CoinMultiplierManager : MonoBehaviour
 {
     public static CoinMultiplierManager Instance;
     private Dictionary<CandyType, float> candyMultipliers = new Dictionary<CandyType, float>();
+
     private void Awake()
     {
-        Instance = this;
-
-        // 1. typeof(CandyType)で
-        // CandyType（列挙型）に定義されているすべての定義値（種類）を配列として一覧取得する
-        // 2. foreach (CandyType type in System.Enum.GetValues()で
-        // 取得した各種類（CandyType）をひとつずつ取り出し、変数 type に代入しながら繰り返し処理を行う
-        foreach (CandyType type in System.Enum.GetValues(typeof(CandyType)))
+        if (Instance == null)
         {
-            // 3. 取り出した種類をキーとして、Dictionary（candyMultipliers）に初期倍率 1.0f（1.0倍）を設定する
-            candyMultipliers[type] = 1.0f;
+            Instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // 各キャンディの種類に応じた初期倍率を設定
+        InitializeMultipliers();
     }
+
+    private void InitializeMultipliers()
+    {
+        // 正方形キャンディ
+        candyMultipliers[CandyType.ChocoMint] = 8.0f;
+        candyMultipliers[CandyType.Strawberry] = 8.0f;
+        candyMultipliers[CandyType.Lemon] = 5.0f;
+        candyMultipliers[CandyType.Orange] = 5.0f;
+
+        // 球形キャンディ
+        candyMultipliers[CandyType.SphereChocoMint] = 3.0f;
+        candyMultipliers[CandyType.SphereStrawberry] = 3.0f;
+        candyMultipliers[CandyType.SphereLemon] = 1.0f;
+        candyMultipliers[CandyType.SphereOrange] = 1.0f;
+    }
+
     public float GetMultiplier(CandyType type)
     {
-        return candyMultipliers[type];
+        if (candyMultipliers.TryGetValue(type, out float value))
+        {
+            return value;
+        }
+        return 1.0f; // 万が一取得できなかった場合のデフォルト値
     }
+
     public void AddMultiplier(CandyType type, float value)
     {
-        candyMultipliers[type] += value;
+        if (candyMultipliers.ContainsKey(type))
+        {
+            candyMultipliers[type] += value;
+        }
     }
 }
